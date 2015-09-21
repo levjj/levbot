@@ -92,9 +92,11 @@
   <ItemGroup>
     <ClCompile Include="Source\Dll.cpp" />
     <ClCompile Include="Source\LevBot.cpp" />
+    <ClCompile Include="Source\State.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\LevBot.h" />
+    <ClInclude Include="Source\State.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,10 +1,12 @@
 #pragma once
 #include <BWAPI.h>
+#include "./State.h"
 
 // Remember not to use "Broodwar" in any global class constructor!
 
 class LevBot : public BWAPI::AIModule {
 public:
+  LevBot();
   // Virtual functions for callbacks, leave these as they are.
   virtual void onStart();
   virtual void onEnd(bool isWinner);
@@ -24,7 +26,12 @@ public:
   virtual void onSaveGame(std::string gameName);
   virtual void onUnitComplete(BWAPI::Unit unit);
   // Everything below this line is safe to modify.
-  void manageProbe(BWAPI::Unit probe);
-  void manageNexus(BWAPI::Unit nexus);
-  void manageSupply(BWAPI::Unit nexus);
+  BWAPI::Unit getReadyProbe();
+  BWAPI::Unit getIdleProbe();
+  BWAPI::Unit getIdleTrainer(BWAPI::UnitType type);
+  bool dispatch(BWAPI::UnitType type, State *current);
+  int attackUnits();
+private:
+  State *goal;
+  const BWAPI::Unit *startNexus;
 };
